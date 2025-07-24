@@ -1,0 +1,172 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.75rem;
+  /* Sky blue and white shades theme */
+  --background: #f0f9ff; /* sky-50 */
+  --foreground: #0c4a6e; /* sky-900 */
+  --card: #ffffff;
+  --card-foreground: #0c4a6e;
+  --popover: #ffffff;
+  --popover-foreground: #0c4a6e;
+  --primary: #0284c7; /* sky-600 */
+  --primary-foreground: #ffffff;
+  --secondary: #e0f2fe; /* sky-100 */
+  --secondary-foreground: #075985; /* sky-700 */
+  --muted: #f0f9ff; /* sky-50 */
+  --muted-foreground: #0ea5e9; /* sky-500 */
+  --accent: #bae6fd; /* sky-200 */
+  --accent-foreground: #075985;
+  --destructive: #dc2626;
+  --border: transparent;
+  --input: #f8fafc;
+  --ring: #38bdf8; /* sky-400 */
+  --chart-1: #0284c7; /* sky-600 */
+  --chart-2: #38bdf8; /* sky-400 */
+  --chart-3: #dc2626;
+  --chart-4: #059669;
+  --chart-5: #7c3aed;
+  --sidebar: #f0f9ff; /* Same as background for seamless look */
+  --sidebar-foreground: #0c4a6e;
+  --sidebar-primary: #0284c7;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #bae6fd;
+  --sidebar-accent-foreground: #075985;
+  --sidebar-border: transparent;
+  --sidebar-ring: #38bdf8;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background-image: radial-gradient(
+        circle at 25% 25%,
+        rgba(224, 242, 254, 0.4) 0%,
+        /* sky-100 with opacity */ transparent 50%
+      ),
+      radial-gradient(
+        circle at 75% 75%,
+        rgba(186, 230, 253, 0.3) 0%,
+        /* sky-200 with opacity */ transparent 50%
+      );
+  }
+}
+
+@layer components {
+  .sidebar-group {
+    @apply flex w-full flex-col gap-y-2;
+  }
+
+  .sidebar-group-title {
+    @apply overflow-hidden text-ellipsis text-sm font-semibold text-sky-800 tracking-wide;
+  }
+
+  .sidebar-item {
+    @apply flex h-[40px] w-full flex-shrink-0 items-center gap-x-3 rounded-xl p-3 text-base font-medium text-sky-700 transition-all duration-200 hover:bg-sky-100 hover:shadow-sm hover:border-l-4 hover:border-l-sky-600;
+    &.active {
+      @apply bg-gradient-to-r from-sky-600 to-blue-600 text-white shadow-md border-l-4 border-l-sky-800;
+    }
+  }
+
+  .title {
+    @apply text-3xl font-bold text-sky-800 tracking-tight;
+  }
+
+  .btn-ghost {
+    @apply flex h-10 flex-shrink-0 items-center justify-center gap-x-2 rounded-xl p-2 text-sky-600 transition-all duration-200 hover:bg-sky-100 hover:text-sky-800 hover:shadow-sm;
+  }
+
+  .link {
+    @apply text-base font-medium text-sky-700 transition-colors hover:text-sky-700 hover:underline decoration-sky-600;
+  }
+
+  .input {
+    @apply hidden h-10 flex-shrink-0 items-center gap-x-2 rounded-xl border border-sky-200 bg-white px-3 text-base text-sky-900 shadow-sm transition-all duration-200 placeholder:text-sky-400 focus-within:border-sky-500 focus-within:ring-2 focus-within:ring-sky-200 hover:shadow-md md:flex md:w-auto lg:w-80;
+  }
+
+  /* Sky-themed components */
+  .sky-card {
+    @apply bg-gradient-to-br from-white to-sky-50 border border-sky-200 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 backdrop-blur-sm;
+  }
+
+  .sky-button-primary {
+    @apply bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-700 hover:to-blue-700 text-white font-semibold py-2 px-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5;
+  }
+
+  .sky-button-secondary {
+    @apply bg-white hover:bg-sky-50 text-sky-700 font-medium py-2 px-4 rounded-xl border border-sky-300 hover:border-sky-400 shadow-sm hover:shadow-md transition-all duration-200;
+  }
+
+  .sky-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-sky-100 text-sky-800 border border-sky-200;
+  }
+
+  .sky-header {
+    @apply bg-background backdrop-blur-sm;
+  }
+
+  .outlet-bg {
+    background-color: #deeffb; /* sky-50 */
+    background-image: radial-gradient(
+        circle at 25% 25%,
+        rgba(224, 242, 254, 0.4) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 75% 75%,
+        rgba(186, 230, 253, 0.3) 0%,
+        transparent 50%
+      );
+    border-top-left-radius: 2rem;
+  }
+  .email-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 300px;
+  }
+}
