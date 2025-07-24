@@ -49,4 +49,4 @@ export const login = ({ email }) => api.post("/auth/login", { email });
 export const loginVerifyOtp = ({ email, otp }) =>
   api.post("/auth/login-verify-otp", { email, otp });
 
-export const fetchCurrentUser = () => api.get("/auth/me");
+export const fetchCurrentUser = () => api.get("/auth/getuser");

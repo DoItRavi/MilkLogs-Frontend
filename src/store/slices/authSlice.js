@@ -58,7 +58,7 @@ export const loginVerifyOtp = createAsyncThunk(
 );
 
 export const fetchCurrentUser = createAsyncThunk(
-  "auth/fetchCurrentUser",
+  "auth/getuser",
   async (_, { rejectWithValue }) => {
     try {
       const response = await apiFetchCurrentUser();
