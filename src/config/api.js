@@ -2,7 +2,7 @@
 import axios from "axios";
 
 // Base URL for all API requests
-const API_BASE_URL = "https://milk-logs-frontend.vercel.app/";
+const API_BASE_URL = "https://milklogs-backend.vercel.app/";
 
 // Create an Axios instance
 const api = axios.create({

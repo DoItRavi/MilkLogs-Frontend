@@ -11,10 +11,4 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  server: {
-    proxy: {
-      "/auth": { target: "https://milklogs-backend.vercel.app/" },
-      "/dashboard": { target: "http://localhost:4000" },
-    },
-  },
 });
